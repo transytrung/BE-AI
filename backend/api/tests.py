@@ -7,10 +7,9 @@ from .models import University, Program, FAQ
 class UniversityModelTestCase(TestCase):
     def setUp(self):
         self.university = University.objects.create(
-            name="Test University",
-            location="Test Location",
-            contact_email="test@example.com",
-            phone_number="123456789"
+            name="University of Transport and Communication",
+            location="Hanoi",
+            website = "utc.edu.vn"
         )
 
     def test_university_str(self):
@@ -53,10 +52,10 @@ class UniversityAPITestCase(TestCase):
     def setUp(self):
         self.client = APIClient()
         self.university_data = {
-            "name": "API University",
-            "location": "API Location",
-            "contact_email": "api@example.com",
-            "phone_number": "0987654321"
+            "name": "University of Transport and Communication",
+            "location": "Hanoi",
+            "website": "utc.edu.vn",
+            
         }
         self.response = self.client.post(
             reverse('university-list-create'), 
