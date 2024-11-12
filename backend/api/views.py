@@ -1,19 +1,18 @@
-from django.forms.models import model_to_dict
 from rest_framework.response import Response 
 from rest_framework.decorators import api_view
-
-from products.models import Product
-from products.serializers import ProductSerializer
+from .models import Program
+from .serializers import ProgramSerializer
 
 @api_view(['POST'])
 def api_home(request, *args, **kwargs):
     """
-    View API DRF
+    View API DRF for Program
     """
-    serializer = ProductSerializer(data=request.data)
+    serializer = ProgramSerializer(data=request.data)
     if serializer.is_valid():
+        # Optionally save the instance if needed
         # instance = serializer.save()
-        print(serializer.data)    
+        print(serializer.data)
         return Response(serializer.data)
     else:
         return Response(serializer.errors, status=400)
